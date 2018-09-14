@@ -1,0 +1,44 @@
+public class Ciphers {
+	
+	public static void main(String [] args)
+	{
+		System.out.println("This is a crypto app");
+		//System.out.println("List of ciphers: \n Simple \n Basic \n Affine");
+		
+		String sample = "Hello World";
+		caeser(sample);
+		
+		sample = "Marietta"; 
+		caeser(sample);
+	}
+	
+	/**
+	 * Caeser's cipher is one of the oldest in the world
+	 * It is a simple substitution with a shift by 3
+	 * @param input
+	 */
+	public static void caeser(String input)
+	{
+		System.out.println(input);
+		input = input.toUpperCase();
+		
+		String output = "";
+		for(int i = 0; i < input.length(); i++) 
+		{
+			char c = input.charAt(i);
+			int num = getNum(c);
+			//System.out.println(num);
+			System.out.print(getChar(num + 3));
+		}
+//		System.out.println((char) (7 + 'A'));
+	}
+	
+	public static int getNum(char c) {
+		return c - 'A';
+    }
+	
+	public static char getChar(int num) {
+		return (char) (num + 'A'); 
+	}
+
+}
