@@ -5,48 +5,12 @@ public class Ciphers {
 	public static void main(String [] args)
 	{
 		System.out.println("This is a crypto app");
-		//System.out.println("List of ciphers: \n Simple \n Basic \n Affine");
+		//System.out.println("List of ciphers: \n Simple \n Basic \n");
 		
-		String sample = "Hello World";
-		caeser(sample);
-		
-		sample = "Marietta"; 
-		caeser(sample);
-		
-		//countCharacters("Marietta");
+		simpleKeySearch("FCGUNKBHEJGCLK");
 		countCharacters("FCGUNKBHEJGCLK");
-		
-		//simpleKeySearch("PDULHWWD");
-		//simpleKeySearch("FCGUNKBHEJGCLK");
-		//simpleKeySearch("IESRNATOLUSECA");
 	}
 	
-	public static void countCharacters(String input)
-	{
-//		int[] count = new int [26];
-//		
-//		for(int i = 0; i < input.length(); i++)
-//        {
-//            int index = getNum(input.charAt(i));
-//            System.out.println(index);
-//            //count[index]++;
-//        }
-//		
-//		 for (int i = 0; i < 26; i++) {
-//	            System.out.println(getChar(i) + " " + count[i]);
-//	        }
-		
-		Map<Character,Integer> frequencies = new HashMap<>();
-		for (char ch : input.toCharArray()) 
-		   frequencies.put(ch, frequencies.getOrDefault(ch, 0) + 1);
-		
-		for (Character ch : frequencies.keySet())
-		{
-			System.out.println(ch + " " + frequencies.get(ch));
-		}
-        
-        
-	}
 	
 	/**
 	 * A method that tries all possible keys for simple substitution 
@@ -99,9 +63,10 @@ public class Ciphers {
 	 */
 	public static void caeser(String input)
 	{
-		String ct = simple(input, 3);
+		simple(input, 3);
 	}
 	
+	//helper methods 
 	public static int getNum(char c) {
 		return c - 'A';
     }
@@ -110,4 +75,15 @@ public class Ciphers {
 		return (char) ((num % 26) + 'A'); 
 	}
 
+	
+	public static void countCharacters(String input)
+	{
+		Map<Character,Integer> frequencies = new HashMap<>();
+		for (char ch : input.toCharArray()) 
+		   frequencies.put(ch, frequencies.getOrDefault(ch, 0) + 1);
+		
+		for (Character ch : frequencies.keySet())
+			System.out.println(ch + " " + frequencies.get(ch));
+        
+	}
 }
